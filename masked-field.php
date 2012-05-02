@@ -57,16 +57,17 @@ class Masked_field extends acf_Field
 	
 	function create_field($field)
 	{
+		$field_id = uniqid();
 		if(isset($field['formatting'])) {
 			?>
 			<script type="text/javascript">
 				jQuery(function($){
-				   $(".maskedfield").mask("<?=$field['formatting']?>");
+				   $(".maskedfield<?=$field_id?>").mask("<?=$field['formatting']?>");
 				});
 			</script>
 			<?php
 		}
-		echo '<input type="text" value="' . $field['value'] . '" id="' . $field['name'] . '" class="' . $field['class'] . '" name="' . $field['name'] . '" />';
+		echo '<input type="text" value="' . $field['value'] . '" id="' . $field['name'] . '" class="' . $field['class'] . $field_id . '" name="' . $field['name'] . '" />';
 	}
 	
 	
@@ -90,10 +91,7 @@ class Masked_field extends acf_Field
 			<td class="label">
 				<label><?php _e("Formatting",'acf'); ?></label>
 				<p class="description"><?php _e("Define how to mask input",'acf'); ?></p>
-				<p class="description"><?php _e('eg: "99/99/9999"<br/>
-				"(999) 999-9999"<br/>
-				"99-9999999"<br/>
-				"999-99-9999"'); ?></p>
+				<p class="description"><?php _e('eg:<br/>99/99/9999<br/>(999) 999-9999<br/>99-9999999<br/>999-99-9999'); ?></p>
 			</td>
 			<td>
 				<?php 
