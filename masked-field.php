@@ -1,4 +1,10 @@
 <?php
+/*
+	Author: Wyatt Johnson
+	Website: http://www.wyattjohnson.ca/
+	Github: https://github.com/Wyattjoh/Masked_ACF_Field/
+*/
+
 
 class Masked_field extends acf_Field
 {
@@ -34,7 +40,7 @@ class Masked_field extends acf_Field
 	function admin_print_scripts()
 	{
 		
-		wp_register_script('jquery-masking', get_bloginfo('stylesheet_directory').'/plugins/masked_input.js',array('jquery'));
+		wp_register_script('jquery-masking', get_bloginfo('stylesheet_directory').'/acf-fields/assets/masked_input.js',array('jquery'));
 		
 		wp_enqueue_script(array(
 			'jquery',
